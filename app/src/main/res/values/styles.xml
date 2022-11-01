@@ -1,0 +1,167 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Material.Light">
+        <item name="android:scrollViewStyle">@style/BackgroundStyle</item>
+        <item name="android:textViewStyle">@style/lblTextView</item>
+        <item name="android:editTextStyle">@style/txtEditText</item>
+        <item name="android:buttonStyle">@style/btnButton</item>
+        <item name="android:radioButtonStyle">@style/btnRadioButton</item>
+        <item name="android:checkboxStyle">@style/chkBox</item>
+        <item name="android:layoutDirection">rtl</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:dialogTheme">@style/AlertDialogStyle</item>
+
+
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="AlertDialogStyle1" parent="Base.Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <item name="android:colorPrimary">@color/colorPrimary</item>
+        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="AlertDialogStyle" parent="android:Theme.Material.Light.Dialog.Alert">
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:background">@color/grey_dialog_box</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="AppTheme1" parent="Theme.AppCompat.Light">
+        <item name="android:scrollViewStyle">@style/BackgroundStyle</item>
+        <item name="android:textViewStyle">@style/lblTextView</item>
+        <item name="android:editTextStyle">@style/txtEditText</item>
+        <item name="android:buttonStyle">@style/btnButton</item>
+        <item name="android:radioButtonStyle">@style/btnRadioButton</item>
+        <item name="android:checkboxStyle">@style/chkBox</item>
+        <item name="android:layoutDirection">rtl</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:dialogTheme">@style/AlertDialogStyle1
+        </item>
+
+
+    </style>
+
+    <style name="BackgroundStyle" parent="android:Widget.Material.Light.ScrollView">
+        <item name="android:padding">24dp</item>
+    </style>
+
+
+    <!--TEXTVIEW-->
+    <style name="lblTextView" parent="android:Widget.Material.Light.TextView">
+        <item name="android:background">@drawable/background_grad</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:textSize">24sp</item> <!--or 16sp-->
+        <item name="android:elevation">1dp</item>
+        <item name="android:paddingStart">8dp</item>
+    </style>
+
+
+    <style name="lblTextViewHeading" parent="android:Widget.Material.Light.TextView">
+        <item name="android:textColor">@color/heading</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:textSize">24sp</item> <!--or 16sp-->
+        <item name="android:elevation">1dp</item>
+        <item name="android:paddingStart">8dp</item>
+    </style>
+
+
+    <!--HELPER-TEXT-->
+    <style name="helperText" parent="android:Widget.Material.Light.TextView">
+        <item name="android:typeface">serif</item>
+        <item name="android:textSize">20sp</item> <!--or 14sp-->
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:background">@color/colorHeading</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+
+    </style>
+
+    <!--EDITTEXT-->
+    <style name="txtEditText" parent="android:Widget.Material.Light.EditText">
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:textSize">24sp</item> <!--or 16sp-->
+        <item name="android:background">#d6d6d6</item>
+
+    </style>
+
+    <style name="fieldGroup">
+        <item name="android:padding">24dp</item>
+        <item name="android:background">@drawable/llborder</item>
+    </style>
+
+    <style name="btnButton" parent="android:Widget.Material.Light.Button">
+        <item name="android:background">@drawable/button_bg</item>
+        <item name="android:padding">@dimen/activity_horizontal_margin</item>
+        <item name="android:layout_marginTop">@dimen/activity_horizontal_margin</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:elevation">2dp</item>
+    </style>
+
+
+    <style name="btnCSVDownloader" parent="android:Widget.Material.Light.Button">
+        <item name="android:background">@color/downloader</item>
+        <item name="android:padding">@dimen/activity_horizontal_margin</item>
+        <item name="android:layout_marginTop">@dimen/activity_horizontal_margin</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:elevation">2dp</item>
+    </style>
+
+
+    <style name="btnRadioButton" parent="android:Widget.Material.Light.CompoundButton.RadioButton">
+        <item name="android:background">#d6d6d6</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColorPrimaryDisableOnly">@color/white</item>
+
+    </style>
+
+    <style name="radiogroup">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">right</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:background">#d6d6d6</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:padding">16dp</item>
+
+    </style>
+
+    <style name="chkBox" parent="android:Widget.Material.Light.CompoundButton.CheckBox">
+        <item name="android:textSize">24sp</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:background">#d6d6d6</item>
+        <item name="android:textColorPrimaryDisableOnly">@color/white</item>
+
+    </style>
+
+    <style name="FullscreenTheme" parent="android:Theme.Material.Light">
+        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
+        <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
+    </style>
+
+    <style name="FullscreenActionBarStyle" parent="android:Widget.Holo.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+
+
+</resources>

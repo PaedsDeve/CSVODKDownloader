@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimaryDark">#006064</color>
+    <color name="colorPrimary">#00BCD4</color>
+    <color name="colorAccent">#00bfa5</color>
+    <color name="colorHeading">#B2DFDB</color>
+    <color name="colorText">#050505</color>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="grayOverlay">#7f7f7f7f</color>
+    <color name="white">#efefef</color>
+
+    <color name="grey_dialog_box">#808080</color>
+
+    <color name="disabled_color">#000000</color>
+    <color name="downloader">#F69656</color>
+    <color name="btntext">#BF28C6</color>
+    <color name="heading">#BF28C6</color>
+</resources>
+
