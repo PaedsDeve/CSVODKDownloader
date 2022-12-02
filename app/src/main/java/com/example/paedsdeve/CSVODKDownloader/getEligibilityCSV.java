@@ -2,8 +2,11 @@ package com.example.paedsdeve.CSVODKDownloader;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Environment;
+import android.provider.Settings;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -57,7 +60,7 @@ public class getEligibilityCSV extends AsyncTask<Void, Void, String> {
     protected String doInBackground(Void... args) {
         try {
             //String url = AppMain.PROJECT_URI + FormsContract.FormsTable.URI;
-            String url = "https://kc.humanitarianresponse.info/api/v1/data/1220256";
+            String url = "https://kc.humanitarianresponse.info/api/v1/data/1258544";
             Log.d(TAG, "doInBackground: URL " + url);
             return downloadUrl(url);
         } catch (IOException e) {
@@ -82,8 +85,9 @@ public class getEligibilityCSV extends AsyncTask<Void, Void, String> {
             }
 
 
-            File folder = new File(Environment.getExternalStorageDirectory() +
-                    "/com/forms");
+            File folder = new File(Environment.getExternalStorageDirectory().getAbsolutePath(),
+                    "/Android/data/org.odk.collect.android/files/projects");
+
 
             if (!folder.exists()) {
                 return "ODK not found in this device install ODK first";
@@ -158,15 +162,15 @@ public class getEligibilityCSV extends AsyncTask<Void, Void, String> {
 
                 JSONArray json = new JSONArray(result);
 
-                File dir = new File(Environment.getExternalStorageDirectory() +
-                        "/com/forms/tvipneumonia2022/FORM A 0 INITIAL ASSESSMENT FORM-media");
+                //File dir = new File("/storage/emulated/0/Android/data/org.odk.collect.android/files/projects/");
 
-                if (!dir.exists())
-                    dir.mkdir();
+                //File file_lf = new File("/storage/emulated/0/Android/data/org.odk.collect.android/files/projects/8f3e3faf-1b8f-450d-9975-2ed22afde78c/forms/FORM NO A 1 CRF Pneumonia-media/" + "form0.csv");
 
 
-                File file_lf = new File(Environment.getExternalStorageDirectory() +
-                        "/com/forms/tvipneumonia2022/FORM A 0 INITIAL ASSESSMENT FORM-media/forma0.csv");
+                File file_lf = new File(Environment.getExternalStorageDirectory() + "/tvipneumonia2022/forma0.csv");
+
+//                Toast.makeText(mContext, Environment.getExternalStoragePublicDirectory("/Android/data/org.odk.collect.android/").toString(), Toast.LENGTH_LONG).show();
+
 
                 String csvString = CDL.toString(json);
                 FileUtils.writeStringToFile(file_lf, csvString);
