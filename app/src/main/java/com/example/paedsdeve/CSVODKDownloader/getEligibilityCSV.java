@@ -59,8 +59,10 @@ public class getEligibilityCSV extends AsyncTask<Void, Void, String> {
     @Override
     protected String doInBackground(Void... args) {
         try {
-            //String url = AppMain.PROJECT_URI + FormsContract.FormsTable.URI;
-            String url = "https://kc.humanitarianresponse.info/api/v1/data/1258544";
+            // https://kc.humanitarianresponse.info/api/v1/data      // get all forms odk
+            // String url = "https://kc.humanitarianresponse.info/api/v1/data/1278925";     // get specific instance form
+
+            String url = "https://kc.humanitarianresponse.info/api/v1/data";
             Log.d(TAG, "doInBackground: URL " + url);
             return downloadUrl(url);
         } catch (IOException e) {
@@ -73,6 +75,8 @@ public class getEligibilityCSV extends AsyncTask<Void, Void, String> {
         String line = "";
         Log.d(TAG, "doInBackground: Starting");
         URL url = null;
+        String new_url = null;
+        String var_instance_id = "";
 
         try {
             Log.d(TAG, "doInBackground: Trying...");
@@ -85,8 +89,7 @@ public class getEligibilityCSV extends AsyncTask<Void, Void, String> {
             }
 
 
-            File folder = new File(Environment.getExternalStorageDirectory().getAbsolutePath(),
-                    "/Android/data/org.odk.collect.android/files/projects");
+            File folder = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), "/Android/data/org.odk.collect.android/files/projects");
 
 
             if (!folder.exists()) {
@@ -105,6 +108,54 @@ public class getEligibilityCSV extends AsyncTask<Void, Void, String> {
                         .build();
 
                 Response response = client.newCall(request).execute();
+
+                if (response.code() == 200) {
+
+                    InputStream in = response.body().byteStream();
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(in, "utf-8"));
+
+                    StringBuffer sb = new StringBuffer();
+
+                    while ((line = reader.readLine()) != null) {
+                        Log.i(TAG, "ELIgi In: " + line);
+                        sb.append(line);
+                    }
+                    reader.close();
+
+                    JSONArray json = new JSONArray(sb.toString());
+
+                    for (int i = 0; i < json.length(); i++) {
+                        JSONObject jsonObject = new JSONObject(json.getString(i));
+                        if (jsonObject.getString("title").equals("FORM A-0: INITIAL ASSESSMENT FORM")) {
+                            var_instance_id = jsonObject.getString("id");
+                        }
+                    }
+                } else {
+                    System.out.println(response.message());
+                    return response.message();
+                }
+
+                response = null;
+
+
+                if (serverURL == null) {
+                    myurl = myurl + "/" + var_instance_id;
+                    url = new URL(myurl);
+                } else {
+                    url = serverURL;
+                }
+
+
+                Request request1 = new Request.Builder()
+                        .url(url)
+                        .get()
+                        .addHeader("authorization", "token 281de2b90e14e068f73614375903cb427c41bb96")
+                        .addHeader("cache-control", "no-cache")
+                        .addHeader("Content-Type", "application/json")
+                        .addHeader("charset", "utf-8")
+                        .build();
+
+                response = client.newCall(request1).execute();
 
                 //Log.d(TAG, "doInBackground: " + urlConnection.getResponseCode());
 
@@ -132,7 +183,7 @@ public class getEligibilityCSV extends AsyncTask<Void, Void, String> {
 
             }
 
-        } catch (MalformedURLException e) {
+        } catch (JSONException | MalformedURLException e) {
             e.printStackTrace();
         } catch (java.net.SocketTimeoutException e) {
             e.printStackTrace();
@@ -164,10 +215,10 @@ public class getEligibilityCSV extends AsyncTask<Void, Void, String> {
 
                 //File dir = new File("/storage/emulated/0/Android/data/org.odk.collect.android/files/projects/");
 
-                //File file_lf = new File("/storage/emulated/0/Android/data/org.odk.collect.android/files/projects/8f3e3faf-1b8f-450d-9975-2ed22afde78c/forms/FORM NO A 1 CRF Pneumonia-media/" + "form0.csv");
+                File file_lf = new File("/storage/emulated/0/Android/data/org.odk.collect.android/files/projects/d2d3b5fc-21d4-45e8-a764-ed28b9489c5f/forms/FORM NO A 1 CRF Pneumonia-media/" + "forma0.csv");
 
 
-                File file_lf = new File(Environment.getExternalStorageDirectory() + "/tvipneumonia2022/forma0.csv");
+                //File file_lf = new File(Environment.getExternalStorageDirectory() + "/tvipneumonia2022/forma0.csv");
 
 //                Toast.makeText(mContext, Environment.getExternalStoragePublicDirectory("/Android/data/org.odk.collect.android/").toString(), Toast.LENGTH_LONG).show();
 
